@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rice Type Detection</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    background: url("../static/h1.jpg") no-repeat center center/cover;
+
+    color: white;
+    min-height: 100vh;
+}
+
+body.fade-out {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: 0.4s;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+header {
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+nav a {
+    color: white;
+    margin-left: 25px;
+    text-decoration: none;
+}
+
+.main {
+    padding: 80px 60px;
+    max-width: 900px;
+}
+
+.main h2 {
+    margin-bottom: 15px;
+}
+
+.main p {
+    color: #ddd;
+    margin-bottom: 30px;
+}
+
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.box {
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.box h4 {
+    color: #00ffcc;
+    margin-bottom: 10px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h2>RICE TYPE DETECTION</h2>
+
+    <nav>
+       <a href="/" class="nav-link">Home</a>
+<a href="/dashboard" class="nav-link">About</a>
+<a href="/testimonials" class="nav-link">Testimonials</a>
+<a href="/contact" class="nav-link">Contact</a>
+<a href="/predict" class="nav-link">Predict</a>
+    </nav>
+</header>
+
+<section class="main">
+
+    <h2>About the Rice Type Classification Model</h2>
+
+    <p>
+        This model is built using Convolutional Neural Network and trained on labeled images of rice.
+        It takes rice grain images as input and predicts the type accurately.
+    </p>
+
+    <div class="boxes">
+
+        <div class="box">
+            <h4>Accuracy of the Model</h4>
+            <p>The model achieves around 97% accuracy.</p>
+        </div>
+
+        <div class="box">
+            <h4>Different Types of Rice</h4>
+            <p>It can classify multiple rice categories.</p>
+        </div>
+
+        <div class="box">
+            <h4>Dataset Used</h4>
+            <p>Trained on labeled rice image dataset.</p>
+        </div>
+
+        <div class="box">
+            <h4>Technical Architecture</h4>
+            <p>Based on Deep Learning (CNN).</p>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+
+body {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    transition: all 0.5s ease;
+}
+
+body.fade-out {
+    opacity: 0;
+    transform: translateX(-100px) scale(0.97);
+    filter: blur(6px);
+}
+body.fade-in {
+    opacity: 0;
+    transform: translateX(100px) scale(1.03);
+    filter: blur(6px);
+}
+
+</style>
+
+<script>
+
+window.addEventListener("load", () => {
+    document.body.classList.add("fade-in");
+
+    setTimeout(() => {
+        document.body.classList.remove("fade-in");
+    }, 50);
+});
+
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const href = this.getAttribute("href");
+
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 450);
+    });
+});
+
+</script></script>
+</body>
+</html>

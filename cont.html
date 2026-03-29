@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rice Type Detection</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            transition: all 0.5s ease;
+        }
+
+        body.fade-out {
+            opacity: 0;
+            transform: translateX(-100px) scale(0.97);
+            filter: blur(6px);
+        }
+
+        body.fade-in {
+            opacity: 0;
+            transform: translateX(100px) scale(1.03);
+            filter: blur(6px);
+        }
+
+        header {
+            background: #0a0a0a;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .contact {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: #00a884;
+            margin-bottom: 30px;
+        }
+
+        .info-boxes {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 40px;
+        }
+
+        .info {
+            background: white;
+            padding: 20px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        .info h4 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .info p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form {
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            width: 500px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #00a884;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+
+<header>
+    <h2>RICE TYPE DETECTION</h2>
+
+    <nav>
+        <a href="/" class="nav-link">Home</a>
+<a href="/dashboard" class="nav-link">About</a>
+<a href="/testimonials" class="nav-link">Testimonials</a>
+<a href="/contact" class="nav-link">Contact</a>
+<a href="/predict" class="nav-link">Predict</a>
+    </nav>
+</header>
+
+<section class="contact">
+    <h2>CONTACT US</h2>
+
+    <div class="info-boxes">
+        <div class="info">
+            <h4>Our Address</h4>
+            <p>ABES Engineering College, Ghaziabad</p>
+        </div>
+
+        <div class="info">
+            <h4>Email Us</h4>
+            <p>info@example.com<br>contact@example.com</p>
+        </div>
+
+        <div class="info">
+            <h4>Call Us</h4>
+            <p>+91 9876543210<br>+91 9123456780</p>
+        </div>
+    </div>
+
+    <div class="form">
+        <form onsubmit="return validateForm()">
+
+            <input type="text" id="name" placeholder="Your Name">
+            <div id="nameError" class="error"></div>
+
+            <input type="text" id="email" placeholder="Your Email">
+            <div id="emailError" class="error"></div>
+
+            <input type="text" id="phone" placeholder="Mobile Number">
+            <div id="phoneError" class="error"></div>
+
+            <input type="text" id="subject" placeholder="Subject">
+            <div id="subjectError" class="error"></div>
+
+            <textarea id="message" rows="5" placeholder="Message"></textarea>
+            <div id="messageError" class="error"></div>
+
+            <button type="submit">Send Message</button>
+
+        </form>
+    </div>
+</section>
+
+<script>
+function validateForm() {
+
+    let valid = true;
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let subject = document.getElementById("subject").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    document.getElementById("nameError").innerHTML = "";
+    document.getElementById("emailError").innerHTML = "";
+    document.getElementById("phoneError").innerHTML = "";
+    document.getElementById("subjectError").innerHTML = "";
+    document.getElementById("messageError").innerHTML = "";
+
+    if (name === "") {
+        document.getElementById("nameError").innerHTML = "Enter your name";
+        valid = false;
+    } else if (!/^[A-Za-z ]+$/.test(name)) {
+        document.getElementById("nameError").innerHTML = "Only letters allowed";
+        valid = false;
+    }
+
+    if (email === "") {
+        document.getElementById("emailError").innerHTML = "Enter email";
+        valid = false;
+    } else if (!email.includes("@") || !email.includes(".")) {
+        document.getElementById("emailError").innerHTML = "Invalid email";
+        valid = false;
+    }
+
+    if (phone === "") {
+        document.getElementById("phoneError").innerHTML = "Enter mobile number";
+        valid = false;
+    } else if (!/^[0-9]{10}$/.test(phone)) {
+        document.getElementById("phoneError").innerHTML = "Enter 10 digit number";
+        valid = false;
+    }
+
+    if (subject === "") {
+        document.getElementById("subjectError").innerHTML = "Enter subject";
+        valid = false;
+    }
+
+    if (message === "") {
+        document.getElementById("messageError").innerHTML = "Enter message";
+        valid = false;
+    }
+
+    if (valid) {
+        alert("Form submitted successfully!");
+    }
+
+    return valid;
+}
+
+window.addEventListener("load", () => {
+    document.body.classList.add("fade-in");
+    setTimeout(() => {
+        document.body.classList.remove("fade-in");
+    }, 50);
+});
+
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const href = this.getAttribute("href");
+
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 450);
+    });
+});
+</script>
+
+</body>
+</html>

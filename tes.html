@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Testimonials - Rice Type Detection</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    transition: all 0.5s ease;
+}
+
+body.fade-out {
+    opacity: 0;
+    transform: translateX(-100px) scale(0.97);
+    filter: blur(6px);
+}
+
+body.fade-in {
+    opacity: 0;
+    transform: translateX(100px) scale(1.03);
+    filter: blur(6px);
+}
+
+header {
+    background: #0a0a0a;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #00a884;
+}
+
+
+.testimonials {
+    padding: 50px;
+    text-align: center;
+}
+
+.testimonials h2 {
+    color: #00a884;
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.card h4 {
+    color: #333;
+}
+
+
+@media(max-width: 900px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h2>RICE TYPE DETECTION</h2>
+    <nav>
+        <a href="/" class="nav-link">Home</a>
+<a href="/dashboard" class="nav-link">About</a>
+<a href="/testimonials" class="nav-link">Testimonials</a>
+<a href="/contact" class="nav-link">Contact</a>
+<a href="/predict" class="nav-link">Predict</a>
+    </nav>
+</header>
+
+<section class="testimonials">
+    <h2>TESTIMONIALS</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <p>
+                This rice classification model is very accurate and easy to use.
+                It helped us identify rice types quickly.
+            </p>
+            <h4>- Rahul Sharma</h4>
+        </div>
+
+        <div class="card">
+            <p>
+                The interface is simple and clean. The predictions are fast and reliable.
+                Great work on this project!
+            </p>
+            <h4>- Priya Verma</h4>
+        </div>
+
+        <div class="card">
+            <p>
+                Very useful for agricultural purposes. It saves time and gives
+                precise results.
+            </p>
+            <h4>- Aman Singh</h4>
+        </div>
+
+    </div>
+</section>
+<script>
+
+window.addEventListener("load", () => {
+    document.body.classList.add("fade-in");
+    setTimeout(() => {
+        document.body.classList.remove("fade-in");
+    }, 50);
+});
+
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const href = this.getAttribute("href");
+
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 450);
+    });
+});
+
+</script>
+
+</body>
+</html>
